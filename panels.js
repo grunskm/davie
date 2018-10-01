@@ -11,8 +11,35 @@ function initializePanels(){
   panel[9] = new Panel(957*ratio,254*ratio,140*ratio,125*ratio,10,9);
 }
 
+function words(){
+  push();
+  fill(20);
+  rect(15,height-50,450,35);
+  textSize(30);
+  fill(240);
+  if(timeDay==0){
+    text("12:00PM",30,height-22);
+  }else if(timeDay==1){
+    text("9:00 PM",30,height-22);
+  }else if(timeDay==2){
+    text("12:00 AM",30,height-22);
+  }
+  text("SHIFT to progress", 180, height-22);
+  pop();
+}
 
-function Panel(x, y, w, h, d,imgn) {
+function resize(){
+  if(timeDay>=0){
+  resizeCanvas(windowWidth,windowHeight);
+  ratio = windowWidth/elevation[1].width; //resizing ratio
+  imageW = windowWidth;
+  imageH = elevation[1].height*ratio; //maintaining image proportion independent of window size
+  initializePanels();
+  }
+}
+
+
+function Panel(x, y, w, h, d,imgn){
   this.x = x;
   this.y = y;
   this.w = w;
@@ -40,13 +67,16 @@ function Panel(x, y, w, h, d,imgn) {
     }
     fill(50,50,100,50);
     rect(this.x,this.y,this.w,this.h);
+    
 //     push();
 //     fill(255,0,0);
 //     stroke(255,0,0);
 //     textSize(20);
 //     text(this.n+(timeDay*20),this.x,100);
 //     line(this.x,100,this.x,this.y);
-//     pop();
+//     pop(); 
+//toggle to view panel numbers
+    
   }
 
   function Pix(xx,w,h,d,x,y,nn) {
