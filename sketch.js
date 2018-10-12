@@ -14,6 +14,7 @@ var imgSets = 2;
 
 var ratio;
 var notoReg;
+var n = 0;
 
 function preload(){
   notoReg = loadFont("NotoSans-Regular.ttf");
@@ -60,7 +61,7 @@ function draw() {
    panel[0].display();
    panel[1].display();
    panel[2].display();
-   words();
+  words();
 
 }
 
@@ -79,6 +80,12 @@ function keyPressed(){
       resize()
   }
 }
+
+// function mousePressed(){
+// 	n++;
+// 	saveCanvas("capture"+n+".png","png");
+// 	return False;
+// }
 
 window.onresize = function(){
 resize();
