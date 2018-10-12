@@ -35,7 +35,7 @@ function setup() {
   //noCursor();
   textFont(notoReg);
   timeDay = 0;
-  frameRate(30);
+  frameRate(60);
   createCanvas(windowWidth,windowHeight);
   ratio = width/elevation[1].width;
   imageW = width;
