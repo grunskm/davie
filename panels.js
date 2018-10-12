@@ -14,17 +14,19 @@ function initializePanels(){
 function words(){
   push();
   fill(20);
-  rect(15,height-50,450,35);
+  rect(15,height-50,450,45);
   textSize(30);
   fill(240);
   if(timeDay==0){
-    text("12:00PM",30,height-22);
+    text("12:00PM",30,height-15);
   }else if(timeDay==1){
-    text("9:00 PM",30,height-22);
+    text("9:00 PM",30,height-15);
   }else if(timeDay==2){
-    text("12:00 AM",30,height-22);
+    text("4:00 AM",30,height-15);
   }
-  text("SHIFT to progress", 180, height-22);
+  textSize(20);
+  text("SHIFT to change time of day", 180, height-10);
+  text("SPACE to change colour", 180, height-30);
   pop();
 }
 
