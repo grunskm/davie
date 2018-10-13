@@ -1,5 +1,5 @@
 var loadVal = 50;
-var loadChange = 10;
+var loadChange = 5;
 var elevation = [];
 
 var img = [];
@@ -22,8 +22,8 @@ var count = 0;
 
 function preload(){
   notoReg = loadFont("NotoSans-Regular.ttf");
-  for(i=0;i<timesOfDay;i++){
-    elevation[i] = loadImage("assets/backgrounds/elevation"+[i]+".png");
+    for(i=0;i<timesOfDay;i++){
+    elevation[i] = loadImage("assets/backgrounds/elevation"+[i]+".jpg");
   }
 }
 
@@ -34,16 +34,16 @@ function loadingAnimation(){
   	textSize(30);
   	text("Loading",windowWidth/2-50,windowHeight/2);
   	loadVal += loadChange;
-  	if(loadVal>249||loadVal<1){
+  	if(loadVal>200||loadVal<50){
   		loadChange*= -1;
   	}
   	fill(loadVal);
-  	ellipse(mouseX,mouseY,40);
   	text("Please Wait",windowWidth/2-50,windowHeight/2+40);
   	pop();
 }
 
 function loadFiles(){
+
   for(e=0;e<timesOfDay;e++){
     img[e] = [];
     for(i=0;i<(floor(imgs/timesOfDay));i++){
