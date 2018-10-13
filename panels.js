@@ -9,6 +9,8 @@ function initializePanels(){
   panel[7] = new Panel(460*ratio,295*ratio,90*ratio,115*ratio,7,7);
   panel[8] = new Panel(335*ratio,270*ratio,135*ratio,130*ratio,10,8);
   panel[9] = new Panel(950*ratio,250*ratio,150*ratio,140*ratio,10,9);
+  print("panelsloaded");
+  loading = false;
 }
 
 function words(){

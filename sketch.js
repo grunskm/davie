@@ -1,3 +1,5 @@
+var loadVal = 50;
+var loadChange = 10;
 var elevation = [];
 
 var img = [];
@@ -15,35 +17,66 @@ var imgSets = 2;
 var ratio;
 var notoReg;
 var n = 0;
+var loading = true;
+var count = 0;
 
 function preload(){
   notoReg = loadFont("NotoSans-Regular.ttf");
-  let num =0;
   for(i=0;i<timesOfDay;i++){
-  elevation[i] = loadImage("assets/backgrounds/elevation"+[i]+".png");
+    elevation[i] = loadImage("assets/backgrounds/elevation"+[i]+".png");
   }
+}
+
+function loadingAnimation(){
+    push();
+  	background(255);
+  	fill(100);
+  	textSize(30);
+  	text("Loading",windowWidth/2-50,windowHeight/2);
+  	loadVal += loadChange;
+  	if(loadVal>249||loadVal<1){
+  		loadChange*= -1;
+  	}
+  	fill(loadVal);
+  	ellipse(mouseX,mouseY,40);
+  	text("Please Wait",windowWidth/2-50,windowHeight/2+40);
+  	pop();
+}
+
+function loadFiles(){
   for(e=0;e<timesOfDay;e++){
-    num ++;
     img[e] = [];
     for(i=0;i<(floor(imgs/timesOfDay));i++){
-    img[e][i] = loadImage("assets/images/image"+(i+(e*floor(imgs/timesOfDay)))+".jpg");
+    img[e][i] = loadImage("assets/images/image"+(i+(e*floor(imgs/timesOfDay)))+".jpg",imageLoaded);
     }
   }
 }
 
+function imageLoaded(){
+	count++;
+	print(count);
+	if(count==60){
+		initializePanels()
+		loading = false;
+	}
+}
+
 function setup() {
-  //noCursor();
-  textFont(notoReg);
-  timeDay = 0;
-  frameRate(60);
-  createCanvas(windowWidth,windowHeight);
-  ratio = width/elevation[1].width;
-  imageW = width;
-  imageH = elevation[1].height*ratio;
-  initializePanels();
+   loadFiles();
+   textFont(notoReg);
+   timeDay = 0;
+   frameRate(60);
+   createCanvas(windowWidth,windowHeight);
+   ratio = width/elevation[1].width;
+   imageW = width;
+   imageH = elevation[1].height*ratio; 
 }
 
 function draw() {
+  if(loading){
+	loadingAnimation();
+  }else{
+
   if(timeDay===0){
  		 image(elevation[0],0,0,imageW,imageH);
 	}else if(timeDay==1){
@@ -62,7 +95,7 @@ function draw() {
    panel[1].display();
    panel[2].display();
   words();
-
+  }
 }
 
 function keyPressed(){
