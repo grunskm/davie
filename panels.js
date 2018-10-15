@@ -10,25 +10,93 @@ function initializePanels(){
   panel[8] = new Panel(335*ratio,270*ratio,135*ratio,130*ratio,10,8);
   panel[9] = new Panel(950*ratio,250*ratio,150*ratio,140*ratio,10,9);
   print("panelsloaded");
-  loading = false;
+}
+function timeButton(){
+	this.x = 435;
+	this.y = height-100;
+	this.w = 200;
+	this.h = 100;
+	this.display = function(){
+		push();
+		noStroke();
+		fill(0,150);
+		rect(this.x,this.y,this.w,this.h);
+		textSize(30);
+		fill(200);
+		//text("CHANGE", this.x+20, this.y+50);
+		text("TIME", this.x+55, this.y+60);
+		pop();
+	}
+	this.hit = function(){
+		if(mouseX>this.x && mouseX < this.x+this.w && mouseY>this.y && mouseY < this.y+this.h){
+		    timeDay++;
+     		if(timeDay>=timesOfDay){
+      			timeDay = 0;
+     		}
+     		resize();
+     	}else{
+     	timeDay++;
+     	if(timeDay>=timesOfDay){
+      	timeDay = 0;
+     	}
+     	resize();
+     	}
+	}
+	this.update = function(){
+		this.x = 435;
+		this.y = height-100;
+		this.w = 200;
+		this.h = 100;
+	}
+}
+
+function colourButton(){
+	this.x = 200;
+	this.y = height-100;
+	this.w = 200;
+	this.h = 100;
+	this.display = function(){
+		push();
+		noStroke();
+		fill(0,150);
+		rect(this.x,this.y,this.w,this.h);
+		textSize(30);
+		fill(200);
+		//text("CHANGE", this.x+20, this.y+50);
+		text("COLOUR", this.x+35, this.y+60);
+		pop();
+	}
+	this.hit = function(){
+		if(mouseX>this.x && mouseX < this.x+this.w && mouseY>this.y && mouseY < this.y+this.h){
+		    imgSet++;
+      		if(imgSet>=imgSets){
+      			imgSet = 0;
+     		 }
+      		resize()
+     	}
+	}
+	this.update = function(){
+		this.x = 200;
+		this.y = height-100;
+		this.w = 200;
+		this.h = 100;
+	}
 }
 
 function words(){
   push();
-  fill(20);
-  rect(15,height-50,450,45);
+  fill(0,150);
+  noStroke();
+  rect(15,height-100,150,100);
   textSize(30);
-  fill(240);
+  fill(200);
   if(timeDay==0){
-    text("12:00PM",30,height-15);
+    text("12:00PM",30,height-40);
   }else if(timeDay==1){
-    text("9:00 PM",30,height-15);
+    text("9:00 PM",30,height-40);
   }else if(timeDay==2){
-    text("4:00 AM",30,height-15);
+    text("4:00 AM",30,height-40);
   }
-  textSize(20);
-  text("SHIFT to change time of day", 180, height-10);
-  text("SPACE to change colour", 180, height-30);
   pop();
 }
 
@@ -39,6 +107,8 @@ function resize(){
   imageW = windowWidth;
   imageH = elevation[1].height*ratio; //maintaining image proportion independent of window size
   initializePanels();
+  time.update();
+  colour.update();
   }
 }
 

@@ -1,6 +1,8 @@
 var loadVal = 50;
 var loadChange = 5;
 var elevation = [];
+var colour;
+var time; 
 
 var img = [];
 var imgs = 60;
@@ -70,13 +72,16 @@ function setup() {
    ratio = width/elevation[1].width;
    imageW = width;
    imageH = elevation[1].height*ratio; 
+   
+   time = new timeButton();
+   colour = new colourButton();
 }
 
 function draw() {
   if(loading){
 	loadingAnimation();
   }else{
-
+	background(50);
   if(timeDay===0){
  		 image(elevation[0],0,0,imageW,imageH);
 	}else if(timeDay==1){
@@ -94,8 +99,14 @@ function draw() {
    panel[0].display();
    panel[1].display();
    panel[2].display();
-  words();
+   words();
+   time.display();
+   colour.display();
   }
+}
+function mousePressed(){
+	time.hit();
+	colour.hit();
 }
 
 function keyPressed(){
