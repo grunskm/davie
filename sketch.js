@@ -45,7 +45,6 @@ function loadingAnimation(){
 }
 
 function loadFiles(){
-
   for(e=0;e<timesOfDay;e++){
     img[e] = [];
     for(i=0;i<(floor(imgs/timesOfDay));i++){

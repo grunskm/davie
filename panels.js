@@ -23,8 +23,8 @@ function timeButton(){
 		rect(this.x,this.y,this.w,this.h);
 		textSize(30);
 		fill(200);
-		//text("CHANGE", this.x+20, this.y+50);
-		text("TIME", this.x+55, this.y+60);
+		text("CHANGE", this.x+40, this.y+45);
+		text("TIME", this.x+65, this.y+75);
 		pop();
 	}
 	this.hit = function(){
@@ -62,8 +62,8 @@ function colourButton(){
 		rect(this.x,this.y,this.w,this.h);
 		textSize(30);
 		fill(200);
-		//text("CHANGE", this.x+20, this.y+50);
-		text("COLOUR", this.x+35, this.y+60);
+		text("CHANGE", this.x+35, this.y+45);
+		text("COLOUR", this.x+35, this.y+75);
 		pop();
 	}
 	this.hit = function(){
