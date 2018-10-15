@@ -34,7 +34,7 @@ function timeButton(){
       			timeDay = 0;
      		}
      		resize();
-     	}else{
+     	}else if(mouseY<height-100){
      	timeDay++;
      	if(timeDay>=timesOfDay){
       	timeDay = 0;
