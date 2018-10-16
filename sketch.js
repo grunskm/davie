@@ -1,8 +1,10 @@
 var loadVal = 50;
 var loadChange = 5;
-var elevation = [];
+
 var colour;
 var time; 
+
+var elevation = [];
 
 var img = [];
 var imgs = 60;
@@ -34,7 +36,7 @@ function loadingAnimation(){
   	background(255);
   	fill(100);
   	textSize(30);
-  	text("Loading",windowWidth/2-50,windowHeight/2);
+  	text("Loading  "+count,windowWidth/2-50,windowHeight/2);
   	loadVal += loadChange;
   	if(loadVal>200||loadVal<50){
   		loadChange*= -1;
@@ -81,7 +83,7 @@ function draw() {
 	loadingAnimation();
   }else{
 	background(50);
-  if(timeDay===0){
+    if(timeDay===0){
  		 image(elevation[0],0,0,imageW,imageH);
 	}else if(timeDay==1){
   		image(elevation[1],0,0,imageW,imageH);
