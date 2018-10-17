@@ -36,7 +36,7 @@ function loadingAnimation(){
   	background(255);
   	fill(100);
   	textSize(30);
-  	text("Loading  "+count,windowWidth/2-50,windowHeight/2);
+  	text("Loading  "+count+"/60",windowWidth/2-50,windowHeight/2);
   	loadVal += loadChange;
   	if(loadVal>200||loadVal<50){
   		loadChange*= -1;
