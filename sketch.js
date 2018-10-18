@@ -23,6 +23,7 @@ var notoReg;
 var n = 0;
 var loading = true;
 var count = 0;
+var timer = 0;
 
 function preload(){
   notoReg = loadFont("NotoSans-Regular.ttf");
@@ -100,12 +101,15 @@ function draw() {
    words.display();
    time.display();
    colour.display();
-   
+   timer++;
   }
 }
 function mousePressed(){
+	if(timer>25){
 	time.hit();
 	colour.hit();
+	}
+	timer = 0;
 }
 
 function keyPressed(){
