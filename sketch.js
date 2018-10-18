@@ -73,9 +73,6 @@ function setup() {
    ratio = width/elevation[1].width;
    imageW = width;
    imageH = elevation[1].height*ratio; 
-   
-   time = new timeButton();
-   colour = new colourButton();
 }
 
 function draw() {
@@ -100,9 +97,10 @@ function draw() {
    panel[0].display();
    panel[1].display();
    panel[2].display();
-   words();
+   words.display();
    time.display();
    colour.display();
+   
   }
 }
 function mousePressed(){

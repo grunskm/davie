@@ -9,22 +9,28 @@ function initializePanels(){
   panel[7] = new Panel(460*ratio,295*ratio,90*ratio,115*ratio,7,7);
   panel[8] = new Panel(335*ratio,270*ratio,135*ratio,130*ratio,10,8);
   panel[9] = new Panel(950*ratio,250*ratio,150*ratio,140*ratio,10,9);
+  time = new timeButton(440*ratio,0*ratio,200*ratio,100*ratio,25*ratio);
+  colour = new colourButton(225*ratio,0*ratio,200*ratio,100*ratio,25*ratio);
+  words = new Words(10*ratio,0*ratio,200*ratio,100*ratio,30*ratio)
   print("panelsloaded");
 }
-function timeButton(){
-	this.x = 435;
-	this.y = height-100;
-	this.w = 200;
-	this.h = 100;
+
+function timeButton(x,y,w,h,t){
+	this.w=w,
+	this.h=h;
+	this.y=y;
+	this.x=x;
+	this.t = floor(t);
+
 	this.display = function(){
 		push();
 		noStroke();
 		fill(0,150);
 		rect(this.x,this.y,this.w,this.h);
-		textSize(30);
+		textSize(this.t);
 		fill(200);
-		text("CHANGE", this.x+40, this.y+45);
-		text("TIME", this.x+65, this.y+75);
+		text("CHANGE", this.x+this.w*0.28, this.y+this.h*0.45);
+		text("TIME", this.x+this.w*0.38, this.y+this.h*0.75);
 		pop();
 	}
 	this.hit = function(){
@@ -34,7 +40,7 @@ function timeButton(){
       			timeDay = 0;
      		}
      		resize();
-     	}else if(mouseY<height-100){
+     	}else if(mouseY>this.h){
      	timeDay++;
      	if(timeDay>=timesOfDay){
       	timeDay = 0;
@@ -42,28 +48,24 @@ function timeButton(){
      	resize();
      	}
 	}
-	this.update = function(){
-		this.x = 435;
-		this.y = height-100;
-		this.w = 200;
-		this.h = 100;
-	}
 }
 
-function colourButton(){
-	this.x = 200;
-	this.y = height-100;
-	this.w = 200;
-	this.h = 100;
+function colourButton(x,y,w,h,t){
+	this.w=w,
+	this.h=h;
+	this.y=y;
+	this.x=x;
+	this.t = floor(t);
+	
 	this.display = function(){
 		push();
 		noStroke();
 		fill(0,150);
 		rect(this.x,this.y,this.w,this.h);
-		textSize(30);
+		textSize(this.t);
 		fill(200);
-		text("CHANGE", this.x+35, this.y+45);
-		text("COLOUR", this.x+35, this.y+75);
+		text("CHANGE", this.x+this.w*0.25, this.y+this.h*0.45);
+		text("COLOUR", this.x+this.w*0.25, this.y+this.h*0.75);
 		pop();
 	}
 	this.hit = function(){
@@ -75,29 +77,32 @@ function colourButton(){
       		resize()
      	}
 	}
-	this.update = function(){
-		this.x = 200;
-		this.y = height-100;
-		this.w = 200;
-		this.h = 100;
-	}
 }
 
-function words(){
-  push();
-  fill(0,150);
-  noStroke();
-  rect(15,height-100,150,100);
-  textSize(30);
-  fill(200);
-  if(timeDay==0){
-    text("12:00PM",30,height-40);
-  }else if(timeDay==1){
-    text("9:00 PM",30,height-40);
-  }else if(timeDay==2){
-    text("4:00 AM",30,height-40);
+function Words(x,y,w,h,t){
+
+	this.w = w;
+	this.h = h;
+	this.y = y;
+	this.x = x;
+	this.t = floor(t);
+  
+  	this.display = function(){
+  	push();
+  	fill(0,150);
+  	noStroke();
+  	rect(this.x,this.y,this.w,this.h);
+  	textSize(this.t);
+  	fill(200);
+  	if(timeDay==0){
+    	text("12:00PM",this.x+this.w*0.2, this.y+this.h*0.6);
+  	}else if(timeDay==1){
+    	text("9:00 PM",this.x+this.w*0.2, this.y+this.h*0.6);
+  	}else if(timeDay==2){
+    	text("4:00 AM",this.x+this.w*0.2, this.y+this.h*0.6);
+  	}
+  	pop();
   }
-  pop();
 }
 
 function resize(){
@@ -107,8 +112,6 @@ function resize(){
   imageW = windowWidth;
   imageH = elevation[1].height*ratio; //maintaining image proportion independent of window size
   initializePanels();
-  time.update();
-  colour.update();
   }
 }
 
