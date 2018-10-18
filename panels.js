@@ -40,12 +40,6 @@ function timeButton(x,y,w,h,t){
       			timeDay = 0;
      		}
      		resize();
-     	}else if(mouseY>this.h){
-     	timeDay++;
-     	if(timeDay>=timesOfDay){
-      	timeDay = 0;
-     	}
-     	resize();
      	}
 	}
 }
